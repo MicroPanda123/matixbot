@@ -3,14 +3,13 @@ import model_user
 import time
 from discord.ext import tasks
 import json
-import os
 import random
 
 pogaduszki = 847475105519894618
 
 client = discord.Client()
 
-with open('save_okku', 'r', encoding='utf-8') as f:
+with open('save_okku_new', 'r', encoding='utf-8') as f:
     model = json.load(f)
 
 @client.event
@@ -20,12 +19,11 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if message.channel.id == pogaduszki and random.randrange(0, 100) > 80 and not message.author.bot or client.user.mentioned_in(message):
-        print("Message")
+        print(message.created_at)
         sentence = model_user.generate(model)
         if client.user.mentioned_in(message):
             await message.reply(sentence)
         else:
             await message.channel.send(sentence)
 
-
-client.run(os.getenv('DISCORD_TOKEN'))
+client.run('OTY2MDI3MjM4NjU3MTIyNDM1.Yl7w-Q.RDam2DAiTpEdqTdQjkRCmRXtP-Y')
