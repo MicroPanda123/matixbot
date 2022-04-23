@@ -18,7 +18,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.channel.id == pogaduszki and random.randrange(0, 100) > 80 and not message.author.bot or client.user.mentioned_in(message):
+    if message.channel.id == pogaduszki and random.randrange(0, 100) > 95 and not message.author.bot or client.user.mentioned_in(message):
         print(message.created_at)
         sentence = model_user.generate(model)
         if client.user.mentioned_in(message):
